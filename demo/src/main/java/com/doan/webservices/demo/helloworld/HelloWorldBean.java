@@ -1,4 +1,4 @@
-package com.doan.webservices.demo;
+package com.doan.webservices.demo.helloworld;
 
 public class HelloWorldBean {
 

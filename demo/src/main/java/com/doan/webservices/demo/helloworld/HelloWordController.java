@@ -1,4 +1,4 @@
-package com.doan.webservices.demo;
+package com.doan.webservices.demo.helloworld;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
