@@ -8,9 +8,9 @@ public class User {
 
     @Size(min=2)
     private Integer id;
-    @Size(min=1, max = 250)
+    @Size(min=1, max = 250, message = "Name should have between 1-250 characters")
     private String name;
-    @Past
+    @Past(message ="Date can only occur in the past")
     private Date birthDate;
 
     protected User(){

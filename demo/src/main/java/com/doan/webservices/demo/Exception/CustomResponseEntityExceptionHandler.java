@@ -1,8 +1,10 @@
 package com.doan.webservices.demo.Exception;
 
 import com.doan.webservices.demo.user.UserNotFoundException;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestController;
@@ -36,4 +38,14 @@ public class CustomResponseEntityExceptionHandler extends ResponseEntityExceptio
         return new ResponseEntity(eResponse, HttpStatus.NOT_FOUND);
     }
 
+    //override
+    @Override
+    protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
+        //create new exception response and extract BindingResponse to display validation failure
+        ExceptionResponse eResponse = new ExceptionResponse(new Timestamp(System.currentTimeMillis()), "Data validation failed", ex.getBindingResult().toString());
+
+        //create and return new response entity in one step - will return Bad request
+        return new ResponseEntity(eResponse, HttpStatus.BAD_REQUEST);
+
+    }
 }
