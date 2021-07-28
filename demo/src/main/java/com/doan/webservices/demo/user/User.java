@@ -1,15 +1,27 @@
 package com.doan.webservices.demo.user;
 
+import com.fasterxml.jackson.annotation.JsonFilter;
+import net.minidev.json.annotate.JsonIgnore;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 import java.util.Date;
 
+
+//@JsonFilter("UserDefaultFilter") <= enables dynamic filtering at the request level
+@Entity //creates JPA table entity
 public class User {
 
-    @Size(min=2)
+    @Id
+    @GeneratedValue
     private Integer id;
+
     @Size(min=1, max = 250, message = "Name should have between 1-250 characters")
     private String name;
+
     @Past(message ="Date can only occur in the past")
     private Date birthDate;
 
