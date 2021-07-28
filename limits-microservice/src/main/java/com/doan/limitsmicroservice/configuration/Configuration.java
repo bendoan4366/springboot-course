@@ -1,8 +1,9 @@
 package com.doan.limitsmicroservice.configuration;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.stereotype.Component;
 
-
+@Component
 @ConfigurationProperties("limits-service") //map to all configurations that have "limits-service" in application.properties
 public class Configuration {
 
