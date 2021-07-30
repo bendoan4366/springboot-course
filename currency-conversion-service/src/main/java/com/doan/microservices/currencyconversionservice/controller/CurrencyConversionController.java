@@ -33,8 +33,11 @@ public class CurrencyConversionController {
         BigInteger conversionResponseId = currencyConversionResponse.getId();
         BigDecimal conversionMultiple = currencyConversionResponse.getConversionMultiple();
         BigDecimal finalConvertedAmount = quantity.multiply(conversionMultiple);
+        String exchangeServer = currencyConversionResponse.getServiceEnvironment();
 
         CurrencyConversion finalCurrencyConversion = new CurrencyConversion(conversionResponseId, fromCurrency, toCurrency, quantity, conversionMultiple, finalConvertedAmount);
+        finalCurrencyConversion.setServiceEnvironment(exchangeServer);
+
         return finalCurrencyConversion;
     }
 
@@ -47,8 +50,10 @@ public class CurrencyConversionController {
         BigInteger conversionResponseId = currencyConversionResponse.getId();
         BigDecimal conversionMultiple = currencyConversionResponse.getConversionMultiple();
         BigDecimal finalConvertedAmount = quantity.multiply(conversionMultiple);
+        String exchangeServer = currencyConversionResponse.getServiceEnvironment();
 
         CurrencyConversion finalCurrencyConversion = new CurrencyConversion(conversionResponseId, fromCurrency, toCurrency, quantity, conversionMultiple, finalConvertedAmount);
+        finalCurrencyConversion.setServiceEnvironment(exchangeServer);
         return finalCurrencyConversion;
     }
 
